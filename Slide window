@@ -1,0 +1,47 @@
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+
+int main()
+{
+	int n;
+	cin >> n;
+
+	vector<string> words(n);
+
+	// 读取n个单词
+	for (int i = 0; i < n; i++) {
+		cin >> words[i];
+	}
+
+	int ans = 0;
+	string target = "HAKAHASHIKKUN";
+
+	for (int i = 0; i < n; i++) {
+		string word = words[i];
+
+		// 如果是最后一个单词，去掉句号
+		if (i == n - 1 && word.back() == '.') {
+			word = word.substr(0, word.length() - 1);
+		}
+
+		// 检查是否包含目标子串
+		for (size_t j = 0; j + target.length() <= word.length(); j++) {
+			bool match = true;
+			for (size_t k = 0; k < target.length(); k++) {
+				if (word[j + k] != target[k]) {
+					match = false;
+					break;
+				}
+			}
+			if (match) {
+				ans++;
+				break;  // 同一个单词只计一次
+			}
+		}
+	}
+
+	cout << ans << endl;
+	return 0;
+}
