@@ -1,0 +1,6 @@
+int random = rand () % 60;     取0~59
+int random = rand () % 60 + 40;     取40~99
+
+以电脑时间创建的随机数种子：
+#include<ctime>
+srand((unsigned int)time(NULL))
