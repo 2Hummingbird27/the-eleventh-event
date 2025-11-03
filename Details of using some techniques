@@ -1,0 +1,15 @@
+1、getline使用注意事项：getline确实读取空格符，它是以"\n"为判定，遇到换行符就记为一次，而在调试时按"enter"就相当于一个换行字符。
+	int n;
+	cin >> n;
+	cin.ignore(); // 忽略第一行后的换行符
+
+	int count = 0;
+	for (int i = 0; i < n; i++) {
+		string s;
+		getline(cin, s);
+		if (s.find("nailong") != string::npos) {        //string::npos ： npos 是 string 类的一个静态常量，表示"未找到"或"无效位置"， 通常值为“-1”
+			count++;
+		}
+	}
+3、比较： stable_sort 在比较相等时保持原始顺序
+               sort 不保证相等元素的原始顺序
